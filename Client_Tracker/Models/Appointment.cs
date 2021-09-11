@@ -23,7 +23,7 @@ namespace Client_Tracker.Models
         public TimeSpan Time { get; set; }
 
         [Required]
-        public User Therapist { get; set; }
+        public Therapist Therapist { get; set; }
 
         [Required]
         public Location Location { get; set; }

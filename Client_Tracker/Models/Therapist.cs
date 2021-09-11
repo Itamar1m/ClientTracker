@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Client_Tracker.Models
 {
-    public class User
+    public class Therapist
     {
         public int Id { get; set; }
 
@@ -31,6 +31,10 @@ namespace Client_Tracker.Models
 
         [DefaultValue(true)]
         public bool Active { get; set; } = true;
+
+        public List<Appointment> appointments { get; set; }
+
+
   
 
     }

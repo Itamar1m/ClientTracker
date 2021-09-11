@@ -13,6 +13,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Client_Tracker.Data;
 using Microsoft.EntityFrameworkCore;
+using Client_Tracker.Data.Interfaces;
+using Client_Tracker.Models;
 
 namespace Client_Tracker
 {
@@ -34,6 +36,8 @@ namespace Client_Tracker
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Client_Tracker", Version = "v1" });
             });
+            services.AddScoped<IUserRepo,UserRepo>();  
+            services.AddScoped(typeof(IGenericRepo<>),typeof(GenericRepo<>));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

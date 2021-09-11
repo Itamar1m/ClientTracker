@@ -32,6 +32,9 @@ namespace Client_Tracker.Models
         [Column(TypeName = "nvarchar(20)")]
         public string DateOfBirth{ get; set; }
 
+        [Required]
+        public Therapist therapist { get; set; }
+
         
 
  

@@ -19,7 +19,7 @@ namespace Client_Tracker.Data
                 .Property(b => b.CreatedDate)
                 .HasDefaultValueSql("getdate()");
 
-            modelBuilder.Entity<User>()
+            modelBuilder.Entity<Therapist>()
                 .Property(b => b.Active)
                 .HasDefaultValue("true");
 
@@ -27,9 +27,15 @@ namespace Client_Tracker.Data
                 .Property(b => b.IsClient)
                .HasDefaultValue("true");
         }
+
+        internal void Users(object firstOrDefault)
+        {
+            throw new NotImplementedException();
+        }
+
         public DbSet<Client> Clients { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
-        public DbSet<User> Users { get; set; }
+        public DbSet<Therapist> Therapists { get; set; }
         public DbSet<Location> Locations { get; set; }
     }
 }
