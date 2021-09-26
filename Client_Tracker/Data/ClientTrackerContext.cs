@@ -26,6 +26,7 @@ namespace Client_Tracker.Data
             modelBuilder.Entity<Client>()
                 .Property(b => b.IsClient)
                .HasDefaultValue("true");
+        
         }
 
         internal void Users(object firstOrDefault)

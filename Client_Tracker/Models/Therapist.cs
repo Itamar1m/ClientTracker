@@ -10,6 +10,7 @@ namespace Client_Tracker.Models
 {
     public class Therapist
     {
+      
         public int Id { get; set; }
 
         [Required]
@@ -32,7 +33,7 @@ namespace Client_Tracker.Models
         [DefaultValue(true)]
         public bool Active { get; set; } = true;
 
-        public List<Appointment> appointments { get; set; }
+        public ICollection<Appointment> appointments { get; set; }
 
 
   

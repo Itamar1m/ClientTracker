@@ -27,11 +27,16 @@ namespace Client_Tracker.Controllers
             return Ok(users);
         }
 
-        [HttpGet("1")]
-        public ActionResult test()
+        [HttpGet]
+        [Route("{id}")]
+        public ActionResult GetById(int Id)
         {
-            return Ok();
+            var obj = _generic.GetById(Id);
+            return Ok(obj);
         }
+
+
+
 
     }
 }

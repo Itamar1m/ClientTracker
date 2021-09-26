@@ -12,10 +12,20 @@ namespace Client_Tracker.Controllers
     [ApiController]
     public class TherapistController : GenericController<Therapist>
     {
-        public TherapistController(IGenericRepo<Therapist> generic) : base(generic)
+        private readonly ITherapistRepo _repo;
 
+        public TherapistController(IGenericRepo<Therapist> generic,ITherapistRepo therapistRepo) : base(generic)
         {
+            _repo = therapistRepo;
         }
 
+        [HttpGet]
+        [Route("get{firstName}")]
+        public new ActionResult GetById(string firstName)
+
+        {
+            List<Therapist> therapist = _repo.GetById(firstName);
+            return Ok(therapist);
+        }
     }
 }

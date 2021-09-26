@@ -8,9 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Client_Tracker.Models
 {
     public class Client
-    {
-         
-        [Key]
+    {       
         public int Id { get; set; }
 
         [Required]
@@ -32,9 +30,7 @@ namespace Client_Tracker.Models
         [Column(TypeName = "nvarchar(20)")]
         public string DateOfBirth{ get; set; }
 
-        [Required]
         public Therapist therapist { get; set; }
-
         
 
  

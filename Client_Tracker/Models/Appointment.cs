@@ -9,7 +9,8 @@ namespace Client_Tracker.Models
 {
     public class Appointment
     {
-        [Key]
+    
+    
         public int Id { get; set; }
 
         [Required]

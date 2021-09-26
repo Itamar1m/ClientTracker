@@ -15,6 +15,8 @@ using Client_Tracker.Data;
 using Microsoft.EntityFrameworkCore;
 using Client_Tracker.Data.Interfaces;
 using Client_Tracker.Models;
+using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace Client_Tracker
 {
@@ -36,8 +38,14 @@ namespace Client_Tracker
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Client_Tracker", Version = "v1" });
             });
-            services.AddScoped<IUserRepo,UserRepo>();  
-            services.AddScoped(typeof(IGenericRepo<>),typeof(GenericRepo<>));
+            services.AddScoped<IUserRepo, UserRepo>();
+            services.AddScoped<IClientRepo, ClientRepo>();
+            services.AddScoped<ITherapistRepo, TherapistRepo>();
+            services.AddScoped(typeof(IGenericRepo<>), typeof(GenericRepo<>));
+            services.AddControllers().AddNewtonsoftJson(options =>
+            {
+                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,7 +59,7 @@ namespace Client_Tracker
             }
 
             app.UseHttpsRedirection();
-
+            app.UseDeveloperExceptionPage();
             app.UseRouting();
 
             app.UseAuthorization();

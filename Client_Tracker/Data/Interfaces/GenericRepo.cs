@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Client_Tracker.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,26 @@ namespace Client_Tracker.Data.Interfaces
             throw new NotImplementedException();
         }
 
-     
+
+        public bool SaveChanges()
+        {
+            return (_context.SaveChanges() >= 0);
+        }
+
+        public T Create(T obj)
+        {
+            if (obj == null)
+            {
+                throw new ArgumentNullException(nameof(obj));
+            }
+            table.Add(obj);
+            return obj;
+        }
+
+        public T GetById(int Id)
+        { 
+    
+            return table.Find(Id);
+        }
     }
 }

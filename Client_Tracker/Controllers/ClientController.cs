@@ -12,12 +12,36 @@ namespace Client_Tracker.Controllers
     [ApiController]
     public class ClientController : GenericController<Client>
     {
-        public ClientController(IGenericRepo<Client> generic) : base(generic)
+        private readonly IClientRepo _repository;
+
+        public ClientController(IGenericRepo<Client> generic, IClientRepo repository) : base(generic)
         {
+            _repository = repository;
+        }
+
+
+
+        [HttpPost]
+        [Route("create")]        
+        public ActionResult CreateClient(Client client)
+        {
+            if (client == null)
+            {
+                throw new ArgumentNullException(nameof(client));
+            }
+            else
+            {               
+                _repository.Create(client);
+                _repository.SaveChanges();               
+            }
+
+            return Ok(client);
+
 
         }
 
-    
+
+
 
     }
 }
