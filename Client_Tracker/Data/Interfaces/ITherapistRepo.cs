@@ -8,6 +8,6 @@ namespace Client_Tracker.Data.Interfaces
 {
     public interface ITherapistRepo
     {
-        List<Therapist> GetById(string firstName);
+        Therapist GetByDetail(string firstName);
     }
 }

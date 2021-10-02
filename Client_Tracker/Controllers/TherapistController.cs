@@ -14,18 +14,22 @@ namespace Client_Tracker.Controllers
     {
         private readonly ITherapistRepo _repo;
 
-        public TherapistController(IGenericRepo<Therapist> generic,ITherapistRepo therapistRepo) : base(generic)
+        public TherapistController(IGenericRepo<Therapist> generic, ITherapistRepo therapistRepo) : base(generic)
         {
             _repo = therapistRepo;
+
         }
 
         [HttpGet]
         [Route("get{firstName}")]
-        public new ActionResult GetById(string firstName)
+        public new ActionResult GetFull(string firstName)
 
         {
-            List<Therapist> therapist = _repo.GetById(firstName);
+            Therapist therapist = _repo.GetByDetail(firstName);
             return Ok(therapist);
+
+
+
         }
     }
 }

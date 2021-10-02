@@ -16,13 +16,16 @@ namespace Client_Tracker.Data.Interfaces
 
         }
 
-        public  List<Therapist> GetById(string firstName)
+        public  Therapist GetByDetail(string firstName)
         {
-            List<Therapist> therapists = new List<Therapist>(); ;
+            Therapist therapist = new Therapist();
+            List<Client> clients = new List<Client>();
 
-            therapists = _context.Therapists.Where(t => t.LastName == firstName).ToList();
-            var b = _context.Therapists.Find(firstName); //Finds by primary key
-            return therapists;
+            therapist = _context.Therapists.FirstOrDefault(t => t.FirstName ==firstName);
+            clients = _context.Clients.Where(c => c.therapist.Id == therapist.Id).ToList();
+            //var b = _context.Therapists.Find(firstName); //Finds by primary key
+
+            return therapist;
         }
     }
 }
